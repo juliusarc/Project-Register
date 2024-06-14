@@ -138,65 +138,67 @@
     </style>
 </head>
 <body>
-    <form id="form1" runat="server">
-        <div class="container">
-            <h2>REGISTROS</h2>
-            <asp:Label ID="lblResult" runat="server" EnableViewState="false"></asp:Label>
+ <form id="form1" runat="server">
+    <div class="container">
+        <h2>REGISTROS</h2>
+        <asp:Label ID="lblResult" runat="server" EnableViewState="false"></asp:Label>
 
-            <div class="form-group">
-                <asp:Label ID="lblName" runat="server" Text="Nome:"></asp:Label>
-                <asp:TextBox ID="txtName" runat="server"></asp:TextBox>
-            </div>
-
-            <div class="form-group">
-                <asp:Label ID="lblCPF" runat="server" Text="CPF:"></asp:Label>
-                <asp:TextBox ID="txtCPF" runat="server"></asp:TextBox>
-            </div>
-
-            <div class="form-group">
-                <asp:Label ID="lblGenerationDate" runat="server" Text="Data de Geração:"></asp:Label>
-                <asp:TextBox ID="txtGenerationDate" runat="server"></asp:TextBox>
-            </div>
-
-            <div class="form-group">
-                <asp:Label ID="lblPaymentDate" runat="server" Text="Data de Pagamento:"></asp:Label>
-                <asp:TextBox ID="txtPaymentDate" runat="server"></asp:TextBox>
-            </div>
-
-            <div class="form-group">
-                <asp:Label ID="lblValor" runat="server" Text="Valor:"></asp:Label>
-                <asp:TextBox ID="txtValor" runat="server"></asp:TextBox>
-            </div>
-
-            <div class="form-group">
-                <asp:Label ID="lblObservation" runat="server" Text="Observação:"></asp:Label>
-                <asp:TextBox ID="txtObservation" runat="server"></asp:TextBox>
-            </div>
-
-            <div class="buttons-group">
-                <asp:Button ID="btnSubmit" runat="server" Text="Salvar Registro" OnClick="btnSubmit_Click" />
-                <asp:Button ID="btnUpdate" runat="server" Text="Atualizar Registro" OnClick="btnUpdate_Click" CssClass="btnUpdate" />
-                <asp:Button ID="btnDelete" runat="server" Text="Excluir Registro" OnClick="btnDelete_Click" CssClass="btnDelete" />
-                <asp:Button ID="btnViewBooks" runat="server" Text="Ver Registros" OnClick="btnViewBooks_Click" CssClass="btnViewBooks" />
-            </div>
-
-            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CssClass="gridview">
-                <Columns>
-                    <asp:BoundField DataField="Nome" HeaderText="Nome" />
-                    <asp:BoundField DataField="CPF" HeaderText="CPF" />
-                    <asp:BoundField DataField="DataGerado" HeaderText="Data de Geração" DataFormatString="{0:dd/MM/yyyy}" />
-                    <asp:BoundField DataField="DataPagamento" HeaderText="Data de Pagamento" DataFormatString="{0:dd/MM/yyyy}" />
-                    <asp:BoundField DataField="Valor" HeaderText="Valor" DataFormatString="{0:C}" />
-                    <asp:BoundField DataField="Observacao" HeaderText="Observação" />
-                </Columns>
-            </asp:GridView>
-
-            <div class="search-group">
-                <asp:Label ID="lblSearchCPF" runat="server" Text="Buscar por CPF:" AssociatedControlID="txtSearchCPF"></asp:Label>
-                <asp:TextBox ID="txtSearchCPF" runat="server"></asp:TextBox>
-                <asp:Button ID="btnSearchCPF" runat="server" Text="Buscar" OnClick="btnSearchCPF_Click" CssClass="btnViewBooks" />
-            </div>
+        <div class="form-group">
+            <asp:Label ID="lblName" runat="server" Text="Nome:"></asp:Label>
+            <asp:TextBox ID="txtName" runat="server"></asp:TextBox>
         </div>
-    </form>
+
+        <div class="form-group">
+            <asp:Label ID="lblCPF" runat="server" Text="CPF:"></asp:Label>
+            <asp:TextBox ID="txtCPF" runat="server" MaxLength="11"></asp:TextBox>
+        </div>
+
+        <div class="form-group">
+            <asp:Label ID="lblGenerationDate" runat="server" Text="Data de Geração:"></asp:Label>
+            <asp:TextBox ID="txtGenerationDate" runat="server"></asp:TextBox>
+        </div>
+
+        <div class="form-group">
+            <asp:Label ID="lblPaymentDate" runat="server" Text="Data de Pagamento:"></asp:Label>
+            <asp:TextBox ID="txtPaymentDate" runat="server"></asp:TextBox>
+        </div>
+
+        <div class="form-group">
+            <asp:Label ID="lblValor" runat="server" Text="Valor:"></asp:Label>
+            <asp:TextBox ID="txtValor" runat="server"></asp:TextBox>
+        </div>
+
+        <div class="form-group">
+            <asp:Label ID="lblObservation" runat="server" Text="Observação:"></asp:Label>
+            <asp:TextBox ID="txtObservation" runat="server"></asp:TextBox>
+        </div>
+
+        <div class="buttons-group">
+            <asp:Button ID="btnSubmit" runat="server" Text="Salvar Registro" OnClick="btnSubmit_Click" />
+            <asp:Button ID="btnUpdate" runat="server" Text="Atualizar Registro" OnClick="btnUpdate_Click" CssClass="btnUpdate" />
+            <asp:Button ID="btnDelete" runat="server" Text="Excluir Registro" OnClick="btnDelete_Click" CssClass="btnDelete" />
+            <asp:Button ID="btnViewBooks" runat="server" Text="Ver Registros" OnClick="btnViewBooks_Click" CssClass="btnViewBooks" />
+        </div>
+
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CssClass="gridview">
+            <Columns>
+                <asp:BoundField DataField="Nome" HeaderText="Nome" />
+                <asp:BoundField DataField="CPF" HeaderText="CPF" />
+                <asp:BoundField DataField="DataGerado" HeaderText="Data de Geração" DataFormatString="{0:dd/MM/yyyy}" />
+                <asp:BoundField DataField="DataPagamento" HeaderText="Data de Pagamento" DataFormatString="{0:dd/MM/yyyy}" />
+                <asp:BoundField DataField="Valor" HeaderText="Valor" DataFormatString="{0:C}" />
+                <asp:BoundField DataField="Observacao" HeaderText="Observação" />
+            </Columns>
+        </asp:GridView>
+
+        <div class="search-group">
+            <asp:Label ID="lblSearchCPF" runat="server" Text="Buscar por CPF:" AssociatedControlID="txtSearchCPF"></asp:Label>
+            <asp:TextBox ID="txtSearchCPF" runat="server" MaxLength="11"></asp:TextBox>
+
+            <asp:Button ID="btnSearchCPF" runat="server" Text="Buscar" OnClick="btnSearchCPF_Click" CssClass="btnViewBooks" />
+        </div>
+    </div>
+</form>
+
 </body>
 </html>

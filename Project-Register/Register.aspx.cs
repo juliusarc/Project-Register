@@ -192,10 +192,24 @@ namespace Project_Register
             }
         }
 
+        private string LimparCPF(string cpf)
+        {
+            // Remover os caracteres não numéricos
+            cpf = new string(cpf.Where(char.IsDigit).ToArray());
+
+            // Verifica se o CPF possui 11 dígitos
+            if (cpf.Length != 11)
+                throw new ArgumentException("CPF inválido.");
+
+            return cpf;
+        }
+
         private void BuscarRegistroPorCPF(string cpf)
         {
             try
             {
+                cpf = LimparCPF(cpf);
+
                 using (MySqlConnection connection = new MySqlConnection(connectionString))
                 {
                     connection.Open();
@@ -207,17 +221,35 @@ namespace Project_Register
                         {
                             DataTable dt = new DataTable();
                             adapter.Fill(dt);
-                            GridView1.DataSource = dt;
-                            GridView1.DataBind();
+
+                            if (dt.Rows.Count > 0)
+                            {
+                                // CPF encontrado, exibir os dados
+                                GridView1.DataSource = dt;
+                                GridView1.DataBind();
+                            }
+                            else
+                            {
+                                // Nenhum CPF encontrado
+                                lblResult.Text = "Nenhum CPF encontrado.";
+                                GridView1.DataSource = null;
+                                GridView1.DataBind();
+                            }
                         }
                     }
                 }
+            }
+            catch (ArgumentException ex)
+            {
+                // CPF inválido
+                lblResult.Text = ex.Message;
             }
             catch (Exception ex)
             {
                 lblResult.Text = $"Erro ao buscar registros por CPF: {ex.Message}";
             }
         }
+
 
         // Função para validar CPF
         private bool IsCpfValid(string cpf)
